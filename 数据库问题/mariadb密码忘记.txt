@@ -1,0 +1,11 @@
+修改mariadb配置文件/etc/my.cnf,添加一行skip-grant-tables就行了
+
+
+[mysqld]
+skip-grant-tables #不检查权限方式启动
+
+systemctl start mariadb
+mysql -uroot(此时不需要输入密码)
+
+update mysql.user set password=password('新密码') where user='root';
+flush privileges;(刷新权限)
